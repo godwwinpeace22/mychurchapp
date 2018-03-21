@@ -1,30 +1,43 @@
 extends layout
 block content
-	.col-sm-12.slider
-		.slide.active
-			.col-sm-12(style='padding:0px;')
-				//img(src="/img/persian-oak-wood-3064187_1280.jpg", alt="")
-			.col-sm-8.col-sm-offset-2.slide-inner
-				
-				h1 You Are Welcome
-				p One of the best ways to connect with God is through our
-				p.cta
-					a(href="/about" style='margin-right:20px;') Learn More about Us
-					a(href="/about") View Worship Times
-		.slide
-			.col-sm-12(style='padding:0px;')
-				//img(src="/img/on-wood-2157535_1280.jpg", alt="")
-			.col-sm-8.col-sm-offset-2.slide-inner
-				h1 Sharing the gospel of christ
-				p For God so loved the world that He gave us His only son. It is our mission to tell the world of what God has given us
-				p.text-center(style='color:#00B7FF;padding-top:10px;') WORSHIPING | FELLOWSHIPPING | SHARING
+	<!-- Start WOWSlider.com HEAD section -->
+	link(rel="stylesheet" type="text/css" href="/stylesheets/style.css")
+	script(type="text/javascript" src="/stylesheets/jquery-3.2.0.js")
+	<!-- End WOWSlider.com HEAD section -->
+	// Start WOWSlider.com BODY section
+	#wowslider-container1.col-sm-12.slider
+		.ws_images
+			ul
+				li
+					img#wows1_0(src='/images/1.jpg', alt='1', title='1')
+				li
+					img#wows1_1(src='/images/2.jpg', alt='2', title='2')
+				li
+					img#wows1_2(src='/images/3.jpg', alt='3', title='3')
+				li
+					img#wows1_3(src='/images/4.jpg', alt='4', title='4')
+				li
+					img#wows1_4(src='/images/5.jpg', alt='5', title='5')
+				li
+					img#wows1_5(src='/images/6.jpg', alt='6', title='6')
+		.ws_bullets
+			div
+				a(href='#', title='1')
+					span 1
+				a(href='#', title='2')
+					span 2
+				a(href='#', title='3')
+					span 3
+				a(href='#', title='4')
+					span 4
+				a(href='#', title='5')
+					span 5
+				a(href='#', title='6')
+					span 6
+		.ws_script(style='position:absolute;left:-99%')
+			a(href='#') 
+		.ws_shadow
 		
-				
-		.slide
-			.col-sm-8.col-sm-offset-2.slide-inner
-				h1 IN HIS PRESENCE
-				hr
-				p.text-center THERE IS FULLNESS OF JOY
 	.welcome.col-sm-10.col-sm-offset-1
 		.col-sm-8.who-we-are
 			h3 You are welcome
@@ -58,7 +71,8 @@ block content
 						.nth-sermon
 							h3: a(href='/sermons/' + sermon.link) #{sermon.title}
 							p #{sermon.date}
-			
+	script(type='text/javascript', src='/javascripts/wowslider.js')
+	script(type='text/javascript', src='/javascripts/script.js')
 			
 		
 
