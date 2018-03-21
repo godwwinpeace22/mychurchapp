@@ -1,164 +1,161 @@
 doctype html
-head
-	meta(charset='utf-8')
-	meta(http-equiv='x-ua-compatible', content='ie=edge')
-	meta(name='viewport', content='width=device-width, initial-scale=1')
-	meta(name='description', content='Lighthouseparish app')
-	meta(name='author', content='GodwinGabriel')
-	link(rel='manifest', href='site.webmanifest')
-	link(rel='apple-touch-icon', href='icon.png')
-	link(rel='author', href='')
-	link(rel='publisher', href='')
-	meta(itemprop='name', content='')
-	meta(itemprop='description', content='')
-	meta(itemprop='image', content='')
-	title=title
-	// Place favicon.ico in the root directory
-	link(rel='shortcut icon', href='/favicon.ico')
-	// Bootstrap core CSS
-	//link(rel='stylesheet', href='/stylesheets/bootstrap.css')
-	link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
-	link(rel="stylesheet", href="/stylesheets/offline-language-english.css")
-	link(rel="stylesheet", href="/stylesheets/offline-theme-chrome.css")
-	link(rel='stylesheet', href='/stylesheets/main.css')
-	script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
-	link(href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600|Lobster|Titillium+Web" rel="stylesheet")
-	// HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
-	//if lt IE 9
-		script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
-		script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
-	//if lte IE 9
-		p.browserupgrade
-			strong outdated
-			a(href='https://browsehappy.com/') upgrade your browser
-body
-	// Main content
-	#mySidenav.sidenav
-		a.closebtn(href='javascript:void(0)') &times;
-		a(href='/') Home
-		a(href='/about') About
-		a(href='/events') Upcoming
-		.dropdwn
-			a(href='#') Media
-				span.caret
-				ul.dropdwn-content
-					li
-						a(href="/sermons") Sermons
-					li
-						a(href="/gallery") Photo Gallery
-					li
-						a(href="/#videos") Videos
-		a(href='#') Give
-		a(href='/contact') Contact
-	#main(style='padding:0px;')
-		//.darken(style='background-color:rgba(0,0,0,0.4);display:none;width:100%;position:absolute')
-		.naver.clearfix
-			.header-liner
-				p.pull-right
-					a(href="/#")
-						span: i.fa.fa-phone 
-						span  +2348038017249
-					a(href="/#") Login
-			.header-nav-bgrd.clearfix
-				.header-left.pull-left
-					.logos.clearfix
-						a(href='/')
-							img(src='/images/rccg.png', alt='rccg logo')
-						a(href="/")
+html(lang="en")
+	head
+		meta(charset='utf-8')
+		meta(http-equiv='x-ua-compatible', content='ie=edge')
+		meta(name='viewport', content='width=device-width, initial-scale=1')
+		meta(name='description', content='Lighthouseparish app')
+		meta(name='author', content='GodwinGabriel')
+		link(rel='apple-touch-icon', href='icon.png')
+		link(rel='author', href='')
+		link(rel='publisher', href='')
+		meta(itemprop='name', content='')
+		meta(itemprop='description', content='')
+		meta(itemprop='image', content='')
+		title=title
+		link(rel='shortcut icon', href='/favicon.ico')
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
+		link(rel="stylesheet", href="/stylesheets/offline-language-english.css")
+		link(rel="stylesheet", href="/stylesheets/offline-theme-chrome.css")
+		link(rel='stylesheet', href='/stylesheets/main.css')
+		script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
+		link(href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600|Lobster|Titillium+Web" rel="stylesheet")
+		// HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries
+		//if lt IE 9
+			script(src='https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js')
+			script(src='https://oss.maxcdn.com/respond/1.4.2/respond.min.js')
+		//if lte IE 9
+			p.browserupgrade
+				strong outdated
+				a(href='https://browsehappy.com/') upgrade your browser
+	body
+		// Main content
+		noscript Sorry, your browser does not support JavaScript!
+		#mySidenav.sidenav
+			a.closebtn(href='javascript:void(0)') &times;
+			a(href='/') Home
+			a(href='/about') About
+			a(href='/events') Upcoming
+			.dropdwn
+				a(href='#') Media
+					span.caret
+					ul.dropdwn-content
+						li
+							a(href="/sermons") Sermons
+						li
+							a(href="/gallery") Photo Gallery
+						li
+							a(href="/#videos") Videos
+			a(href='#') Give
+			a(href='/contact') Contact
+		#main(style='padding:0px;')
+			.naver.clearfix
+				.header-liner
+					p.pull-right
+						a(href="/#")
+							span: i.fa.fa-phone 
+							span  +2348038017249
+						a(href="/#") Login
+				.header-nav-bgrd.clearfix
+					.header-left.pull-left
+						.logos.clearfix
+							a(href='/')
+								img(src='/images/rccg.png', alt='rccg logo')
+							a(href="/")
+								
+								h1 Lighthouse
+								p(style='font-size:12px;') The city of His presence
+					.header-right.pull-right
+						ul.open
+							span.openbtn &#9776;
+						ul.menus
 							
-							h1 Lighthouse
-							p(style='font-size:12px;') The city of His presence
-				.header-right.pull-right
-					ul.open
-						span.openbtn &#9776;
-					ul.menus
+							li.active: a(href='/') Home
+							li: a(href='/about') About Us
+							li: a(href='/events') Upcoming
+							.dropdwn
+								li: a(href='#') Media
+									span.caret
+									ul.dropdwn-content
+										li
+											a(href="/sermons") Sermons
+										li
+											a(href="/gallery") Photo Gallery
+										li
+											a(href="/#videos") Videos
+							li: a(href='#') Give
+							li: a(href='/contact') Contact
+
+			block content
+			.newsletter.col-sm-12
+				h2.text-center Sign Up For Email Updates
+				p.text-center Sign up with your email address to receive news and updates
+				form(action="/contact" method="POST")
+					.inputs.center-block.clearfix
+						input.pull-left(type="text" placeholder="Enter Your Email Address" name='email')
+						input.pull-right.btn.btn-default(type="submit" value='Sign Up')
+				p.text-center We respect your privacy
+				.social
+					p.text-center
+						span(style='margin-right:5px;'): a(href=''): i.fab.fa-facebook-f   
+						span: a(href=''): i.fa.fa-envelope
+			footer.footer.col-sm-12.clearfix
+				.col-sm-10.col-sm-offset-1
+					.col-sm-12
+						.social.center-block
+							a(href="")
+								p.text-center
+									i.fab.fa-facebook-f 
+							a(href="")
+								p.text-center
+									i.fab.fa-twitter
+							a(href="")
+								p.text-center
+									i.fab.fa-google-plus-g
+							a(href="")
+								p.text-center
+									i.fab.fa-vimeo-v
+					hr.col-sm-12
+					
+					ul.col-sm-4
+						li
+							a(href="/")  Home
+						li
+							a(href="/about") About
+						li
+							a(href="/contact") Contact
+						li
+							a(href="/events") Events
+						li
+							a(href="/sermons") Sermons
+					
+					ul.col-sm-4  
+						h3 Service Times
+						p Join us on Sundays by 8:00 AM and on Tuesdays and Thursdays by 5:00PM
 						
-						li.active: a(href='/') Home
-						li: a(href='/about') About Us
-						li: a(href='/events') Upcoming
-						.dropdwn
-							li: a(href='#') Media
-								span.caret
-								ul.dropdwn-content
-									li
-										a(href="/sermons") Sermons
-									li
-										a(href="/gallery") Photo Gallery
-									li
-										a(href="/#videos") Videos
-						li: a(href='#') Give
-						li: a(href='/contact') Contact
+					ul.col-sm-4
+						
+						p 33 Udemezue Abakaliki, Ebonyi State, Nigeria
+						p +2348038017249
+				.col-sm-10.col-sm-offset-1
+					p.pull-left &#169; 2018 RCCG Lighthouse Parish. All rights Reserved
+				.col-sm-12.clearfix(style='font-size:12px;')
+					p.pull-right: a(href='https://www.facebook.com/godwin.gabriel.925' target='_blank' rel="noopener") @Unplugged
 
-		block content
-		.newsletter.col-sm-12
-			h2.text-center Sign Up For Email Updates
-			p.text-center Sign up with your email address to receive news and updates
-			form(action="/contact" method="POST")
-				.inputs.center-block.clearfix
-					input.pull-left(type="text" placeholder="Enter Your Email Address" name='email')
-					input.pull-right.btn.btn-default(type="submit" value='Sign Up')
-			p.text-center We respect your privacy
-			.social
-				p.text-center
-					span(style='margin-right:5px;'): a(href=''): i.fab.fa-facebook-f   
-					span: a(href=''): i.fa.fa-envelope
-		footer.footer.col-sm-12.clearfix
-			.col-sm-10.col-sm-offset-1
-				.col-sm-12
-					.social.center-block
-						a(href="")
-							p.text-center
-								i.fab.fa-facebook-f 
-						a(href="")
-							p.text-center
-								i.fab.fa-twitter
-						a(href="")
-							p.text-center
-								i.fab.fa-google-plus-g
-						a(href="")
-							p.text-center
-								i.fab.fa-vimeo-v
-				hr.col-sm-12
 				
-				ul.col-sm-4
-					li
-						a(href="/")  Home
-					li
-						a(href="/about") About
-					li
-						a(href="/contact") Contact
-					li
-						a(href="/events") Events
-					li
-						a(href="/sermons") Sermons
-				
-				ul.col-sm-4  
-					h3 Service Times
-					p Join us on Sundays by 8:00 AM and on Tuesdays and Thursdays by 5:00PM
-					
-				ul.col-sm-4
-					
-					p 33 Udemezue Abakaliki, Ebonyi State, Nigeria
-					p +2348038017249
-			.col-sm-10.col-sm-offset-1
-				p.pull-left &#169; 2018 RCCG Lighthouse Parish. All rights Reserved
-			.col-sm-12.clearfix(style='font-size:12px;')
-				p.pull-right: a(href='https://www.facebook.com/godwin.gabriel.925' target='_blank') @Unplugged
-
-			
-	
-	script.
-		var elem = $(window).height();
-		var foo = $('.header-nav-bgrd').outerHeight();
-		//alert(foo)
-		-$('.slider').css({height:elem -foo})
-	//script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
-	script(defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
-	script(src="/javascripts/offline.min.js")
-	script(src='/javascripts/main.js')
-	// Google Analytics: change UA-XXXXX-Y to be your site's ID.
-	//script.
-		window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-		ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-		console.log($(window).height())
-	//script(src='https://www.google-analytics.com/analytics.js', async='', defer='')
+		
+		script.
+			var elem = $(window).height();
+			var foo = $('.header-nav-bgrd').outerHeight();
+			//alert(foo)
+			-$('.slider').css({height:elem -foo})
+		//script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+		script(defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
+		script(src="/javascripts/offline.min.js" defer)
+		script(src='/javascripts/main.js' async)
+		// Google Analytics: change UA-XXXXX-Y to be your site's ID.
+		//script.
+			window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
+			ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
+			console.log($(window).height())
+		//script(src='https://www.google-analytics.com/analytics.js', async='', defer='')
