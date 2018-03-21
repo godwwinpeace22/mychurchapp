@@ -1,0 +1,245 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Titillium+Web|Open+Sans|Karma:300,400);
+@font-face {
+	font-weight: normal;
+	font-style: normal;
+	font-family: 'codropsicons';
+	src:url('../fonts/codropsicons/codropsicons.eot');
+	src:url('../fonts/codropsicons/codropsicons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/codropsicons/codropsicons.woff') format('woff'),
+		url('../fonts/codropsicons/codropsicons.ttf') format('truetype'),
+		url('../fonts/codropsicons/codropsicons.svg#codropsicons') format('svg');
+}
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+/*perfect ed sheeran*/
+body  {
+	color: #fff;
+	/*background: #1abc9c;*/
+	transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+	font-family:'Lato', Arial, sans-serif;
+}
+.body{
+	background-image: url(../img/gallery-background.jpg);
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	background-repeat:no-repeat;
+}
+
+.about{
+	background: re;
+	margin: 0 auto;
+	padding:0px;
+	position: relative;
+	z-index: 9;
+	
+}
+
+.about h1{
+	position: relative;
+	top:5%;
+	color:#000;
+	font-weight: bold;
+}
+.about-details{
+	font-size:1.3em;
+	padding:0;
+	color:#474646;
+}
+.about-details p{
+	line-height: 2em;
+	font-weight: lighter;
+}
+.about-activities h2{
+	color:#000;
+	font-weight: bold;
+}
+
+.about-activities{
+	text-align: center;
+	margin-top:.9%;
+	background-color:#fff;
+	padding-bottom: 10%;
+	color: rgb(46, 40, 40);
+}
+.about-pastors{
+	width: 100%;
+	background-color:#e1e2e2;
+	color:#333;
+	display:block;
+	overflow:auto;
+}
+.about-pastors .profile{
+	width: 100%;
+	height: 300px;
+	margin:auto;
+	margin-bottom:10%;
+	text-align: center;
+}
+.about-pastors .profile img{
+	display:block;
+	width: 200px;
+	height: 200px;
+	margin:auto;
+	border-radius:50%;
+	box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.about-pastors h3{
+	text-align:center;
+}
+.contact{
+	background-color:#fff;
+	color:#362f2f;
+	height: px;
+	margin-bottom:px;
+	padding:0;
+	font-family: 'Titillium Web', sans-serif;
+}
+.contact-header{
+	border-top:4px solid tomat;
+	/*box-shado: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+	padding-bottom:20px;
+	margin-top:10px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.contact-details{
+	font-size: 18px;
+	padding:0px;
+}
+.contact label, .contact .span{
+	color:#1abc9c;
+	font-weight: bold;
+}
+.form{
+	background:gainsbor;
+	margin-top:5%;
+	margin-bottom:10%;
+	padding:0px;
+	border-radius: 4px;
+	/*box-shado: 0 4px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+.form .form-left{padding-left: 0px;}
+.form .form-right{padding-right: 0px;}
+.form input{
+	padding:20px;
+	margin-bottom: 16px;
+	border-radius: 10px;
+}
+.form textarea{
+	height:px;
+	width:100%;
+	border-radius: 10px;
+}
+.form button{
+	background:#1abc9c;
+}
+/* Events*/
+.events{
+	padding:0;
+	background-color:#fff;
+	font-family: 'Titillium Web', 'Lato', sans-serif;
+}
+.events-header{
+	padding:0px;
+}
+.events-header h1{
+	color:#474646;
+}
+.events-header iframe{
+	margin-bottom:-24px;
+}
+
+.gallery{
+	min-height: 300px;
+	background-color: #ddd;
+}
+
+
+/*media queries*/
+
+@media (max-width:768px){
+	.form-left{
+		padding-right:0px;
+	}
+	.form-right{
+		padding-left:0px;
+	}
+	.form textarea{
+		width:100%;
+		
+	}
+	.about-details{
+		padding-left:15px;
+	}
+	
+}
+
+@media (min-width: 700px){
+	.header{
+		margin-top:5px;
+	}
+}
+@media (max-width:611px){
+	.about-pastors .col-xs-6{
+		float:none !important;
+		margin:auto;
+		background:re;
+		padding:0px;
+		width:100%;
+	}
+	.about-pastors .profile{
+		width:250px;
+		height:250px;
+		margin-left:auto;
+		margin-right: auto;
+		background-color:#dad8d8;
+		margin-bottom:5%;
+		border-radius: 4px;
+		display:bloc;
+		
+	}
+	.about-pastors .profile img{
+		display: bloc;
+		margin:auto;
+	}
+}
+@media (max-width:550px){
+	.bt-menu ul li a:before{
+		font-size:18px;
+	}
+	body{
+		font-size:12px;
+	}
+	header .media h1{
+		font-size: 3em;
+	}
+	.about-pastors .profile{
+		width:250px;
+		
+	}
+}
+@media (max-width:500px){
+    .bt-menu ul:nth-of-type(2){
+        left:0;
+	}
+	.events-header h1{
+		font-size: 22px;
+	}
+}
+@media (max-width:400px){
+	header .media h1{
+		font-size:2em;
+	}
+	header .about-activities h2{
+		font-size:22px;
+	}
+}

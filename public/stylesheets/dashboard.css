@@ -1,0 +1,18 @@
+.dashboard{
+    padding:0;
+}
+
+.sidebar-dash{
+    background-color:#333;
+    height:560px;
+}
+.sidebar-dash ul a{
+    color:#fff;
+    text-decoration: none;
+}
+.content-dash{
+    color:#000;
+}
+.categories-dash h3{
+    color:#fff;
+}

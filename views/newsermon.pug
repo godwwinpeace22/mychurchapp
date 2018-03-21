@@ -1,0 +1,43 @@
+extends dashboard
+block dashboard
+	.col-sm-8.col-sm-offset-2
+		h3 Add New Sermon
+		form(action='/dashboard/newsermon' method='POST' enctype='multipart/form-data')
+			.form-group
+				input.form-control(type="text" name='title' placeholder="Enter title of sermon" required)
+			.form-group
+				select.form-control(name="presentedBy" required)
+					option Message Presenter
+					option Wale Olaniyan
+					option Peter Elem
+			.form-group
+				input.form-control(type="date" name='date' required)
+			.form-group
+				textarea#textarea1.form-control(type="text" name='txt' placeholder='Enter message text' required)
+			.form-group
+				input.form-control(type="text" name='service' placeholder='The service the sermon was given' required)
+			.form-group
+				input.form-control(type='text' name='bibleTxt' placeholder="Bible Text" required)
+			.form-group
+				input.form-control(type='text' name='series' placeholder="Sermon Series")
+			.form-group
+				select.form-control(name='category' required)
+					option Choose category
+					option faith
+					option deliverance
+					option healing
+					option righteousness
+					option faith
+					option grace
+					option service
+					option thanksgiving
+					option praise
+					option others
+			.form-group
+				input.form-control(type='file' name='imgSrc' accept='image/*')
+			.form-group
+				input.btn.btn-primary(type="submit")
+	//load ckeditor
+	script(src="//cdn.ckeditor.com/4.8.0/basic/ckeditor.js")
+	script.
+		-CKEDITOR.replace( 'textarea1' )

@@ -1,0 +1,37 @@
+extends layout
+block content
+	link(rel="stylesheet", href="/stylesheets/about.css")
+	.contact.col-sm-12
+		.header-nav-bgrd
+		.contact-header.col-sm-10.col-sm-offset-1
+			h1.col-sm-12.text-center(style='padding:0;color:#1abc9c;') Contact Us
+			.col-sm-12.contact-details
+				h1 
+				p Give us a call or just attend one of our great services.
+				hr
+				p
+					span.span Phone  
+					span | +2348038017249
+				p
+					span.span Address
+					span  | 33 Udemezue Street, Off Water Works road, Abakaliki, Nigeria.
+				span
+					span.span Email
+					span  | info@rccglighthouse.com.ng
+		.form.col-sm-10.col-sm-offset-1
+			form(action="/contact" Method='POST').col-sm-12
+				.form-left.col-sm-6
+					.form-group
+						label First Name
+						input.form-control(name='fname' type='text')
+					.form-group
+						label Last Name
+						input.form-control(type="text" name='lname' )
+					.form-group
+						label Your Email
+						input.form-control(type="text" name='email')
+				.form-right.col-sm-6
+					.form-group
+						label(for="msg") Your Message
+						textarea(name="msg", cols="65", rows="10")
+				button.btn.btn-default.center-block(style='padding:10px 100px;margin-bottom:5px;') Submit

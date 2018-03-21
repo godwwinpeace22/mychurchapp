@@ -1,0 +1,47 @@
+extends layout
+block content
+    link(rel="stylesheet", href="/stylesheets/sermons.css")
+    .main(style='padding:0px;')
+        .header-nav-bgrd.col-sm-12
+            h3.text-center
+        .sermon-body.col-sm-12
+            .col-sm-10.col-sm-offset-1
+                .col-sm-12.filter
+                    select#byPastor(name="byPastor")
+                        option filter by pastor
+                        option Peter Elem
+                        option Wale Olaniyan
+                    select#byCat(name="byCat")
+                        option filter by category
+                        option faith
+                        option deliverance
+                        option healing
+                        option righteousness
+                        option faith
+                        option grace
+                        option service
+                        option thanksgiving
+                        option praise
+                        option others
+                    select#bySeries(name='bySeries')
+                        option filter by series
+                .sermon-blocks.col-sm-12
+                    if(sermons && sermons == null || sermons == undefined)
+                        p.bg-danger You are not connected to the internet. Pls check your connection and reload the page
+                    if(sermons && sermons.length== 0)
+                        p.bg-warning=msg
+                    if(sermons)
+                        each sermon in sermons
+                            .card: .col-sm-4
+                                .panel.panel-default
+                                    .panel-heading(style='background-image:url(' + sermon.imgSrc +')')
+                                    .panel-body
+                                        h3: a(href='/sermons/'+ sermon.link) #{sermon.title}
+                                        p By: #{sermon.by}
+                                        p Date: #{sermon.date}
+                                        p Text: #{sermon.bibleTxt}
+                                        p Service: #{sermon.service}
+        script(src='/javascripts/jquery-3.2.0.js')
+        script.
+            //-$('.panel-heading').css({backgroundImage:sermons.imgSrc})
+            

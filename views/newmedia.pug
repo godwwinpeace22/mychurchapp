@@ -1,0 +1,11 @@
+extends dashboard
+block dashboard
+	.col-sm-8.col-sm-offset-2
+		h3 Add New Sermon
+		form(action='/dashboard/newmedia' method='POST' enctype='multipart/form-data')
+			.form-group
+				input.form-control(type="text" name='imgDetail' placeholder="Say something about this image")
+			.form-group
+				input.form-control(type='file' name='imgSrc' accept='image/*')
+			.form-group
+				input.btn.btn-primary(type="submit")

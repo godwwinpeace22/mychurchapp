@@ -1,0 +1,27 @@
+extends layout
+block content
+	link(rel="stylesheet", href="/stylesheets/dashboard.css")
+	.dashboard.col-md-12
+		.col-sm-3.sidebar-dash(style='backgroun:#333;padding-left:0px;')
+			.categories-dash.col-sm-12(style='background:#333;')
+				h3 Dashboard
+				ul(style='backgroun:#333;padding-left:0px;padding-top:10px;')
+					li
+						a(href="/dashboard/newsermon") New Sermon
+					hr
+					li
+						a(href="/dashboard/newmedia") Add media
+					hr
+					li
+						a(href="/dashboard/#otherstuff") Edit Sermons
+					hr
+					li
+						a(href="/dashboard/#anotherstuff") Another Stuff
+					hr
+					li
+						a(href="/dashboard/#anotherstuff") Another Cool Stuff
+		.col-sm-9.content-dash
+			a.pull-right(href="/auth/logout" style='color:#000;background-color:greenyellow;padding:10px;display:inline-block;border-radius:4px;') Logout
+			block dashboard
+					
+				

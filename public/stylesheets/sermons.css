@@ -1,0 +1,164 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:300,400,700|Open+Sans|Karma:300,400);
+body{
+    background-color:#f8f8f8;
+    font-family: 'Lato','Open Sans', sans-serif;
+}
+
+
+.sermon-body{
+    padding:0px;
+}
+.filter{
+    background-color: #fff;
+    padding:2%;
+    margin-bottom:1%;
+    transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -webkit-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+}
+.filter select{
+    padding:5px;
+    border: none!Important;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 22px;
+    color: #555;
+    background-color: #fff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.16)!important;
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.16)!Important;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.16)!Important;
+}
+.filter select:focus{
+    outline:none;
+}
+.sermon-blocks{
+    padding:0;
+    min-height: 320px;
+}
+.panel{
+    min-height: 320px;
+}
+.panel-heading{
+    
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 150px;
+}
+
+.panel-body h3{
+    margin-top:0px;
+    font-size: 1.5em;
+}
+.panel-body h3 a:hover{
+    text-decoration: none;
+}
+.panel-body p{
+    font-size: .79rem;
+    line-height: 1;
+    color:#796f6f;
+}
+
+
+/* readsermon*/
+.read .panel{
+    min-height: 500px;
+}
+.read .panel-heading{
+    height: 200px;
+}
+.read .panel-body li{
+    display: inline-block;
+    background-color: #ecebeb;
+    margin-right:5px;
+    margin-bottom:5px;
+    padding:5px 10px;
+}
+.read .panel-body .text{
+    margin-top:20px;
+}
+.read .panel-body .text p{
+    font-size: 18px;
+    font-weight: lighter;
+}
+.read .replies .views{
+    min-height:50px;
+    width:100%;
+    padding: 0px;
+    margin-bottom:10px;
+}
+.read .replies .views-inner{
+    margin-bottom:10px;
+    background-color: #ecebeb;
+    padding:5px;
+}
+.read .comment .form-group{
+    overflow:auto;
+}
+.read .comment .form label{
+    display: block;
+}
+.comment .form .input-right, .form .input-left{
+    width:45%;
+}
+.comment .form input {
+    width:100%;
+    padding:10px;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius:4px;
+    /* border-radius: 4px; */
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+/* <----Media Querries----->*/
+
+@media (max-width:768px){
+    .newsletter form .inputs{
+        width:60%;
+    }
+    .sermon-body.col-sm-12 {
+        width: 80%;
+        margin:auto;
+    }
+}
+@media (max-width:767px){
+	
+	.sermon-body .col-sm-10{
+        width:6;
+        margin:auto;
+    }
+    .read .col-sm-12{
+        width:70%;
+        margin:auto;
+    }
+}
+
+@media (max-width:478px){
+    .newsletter form .inputs{
+        width:100%;
+    }
+}
+@media (max-width:420px){
+    .read .col-sm-12{
+        width:95%;
+        margin:auto;
+    }
+}
+
+@media (max-width:382px){
+    .newsletter h2{
+        font-size: 25px;
+    }
+    .sermon-body.col-sm-12 {
+        width: 100%;
+        margin:auto;
+    }
+}

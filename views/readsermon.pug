@@ -1,0 +1,47 @@
+extends layout
+block content
+	link(rel="stylesheet", href="/stylesheets/sermons.css")
+	.header-nav-bgrd
+	.read.col-sm-8.col-sm-offset-2
+		.card.col-sm-12
+			.panel.panel-default
+				.panel-heading(style='background-image:url(' + sermon.imgSrc +')')
+				.panel-body
+					if(sermon)
+						h3 #{sermon.title}
+						li By: Pst #{sermon.by}
+						li Date: #{sermon.date}
+						li Text: #{sermon.bibleTxt}
+						li Service: #{sermon.service}
+					hr
+					.text
+						if(sermon)
+						p!=sermon.txt
+			
+		.replies.col-sm-12
+			h3 Comments
+			hr
+			h6 Showing #{comments.length} comments
+			.views
+				if(comments)
+					each comment in comments
+						.views-inner
+							p
+								span(style='text-transform:capitalize;'): b #{comment.name}
+								span: b   |  #{comment.date}
+							p #{comment.comment}
+			hr
+		.comment.col-sm-12
+			h3 Leave A Reply
+			form.form(action="" method='POST')
+				.form-group
+					textarea.form-control(name="comment", cols="30", rows="8" required)
+				.form-group
+					.input-left.pull-left
+						label Name*
+						input(type="text" name='name' required)
+					.input-right.pull-right
+						label Email*
+						input(type="text" name='email' required)
+				.form-group
+					button.btn.btn-primary(type="submit") Submit
