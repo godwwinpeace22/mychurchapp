@@ -166,7 +166,7 @@ body{
 .openbtn{
     font-size:40px;
     cursor:pointer;
-    color:#fff;
+    color:#3a3737;
     text-align: right;
 }
 .sidenav .closebtn {
@@ -184,7 +184,7 @@ body{
 }
 .header-nav-bgrd{
 	width:100%;
-    background-color:rgba(226, 230, 231,1);
+    background-color:#fff;
     
 }
 .header-liner{
@@ -247,12 +247,14 @@ body{
 }
 .header-right{
     background:tomat;
-    width:700px;
-    padding-top:3;
+    width:650px;
+    padding-top:15px;
 }
 .header-right ul{
     background:peachpuf;
     padding:15px;
+    width:fit-content;
+    margin-bottom:0px;
 }
  .header-right>ul>li{
     display:inline;
@@ -265,7 +267,7 @@ body{
 }
 .header-right>ul>li:hover{
     padding:13px;
-    border:2px solid #fff;
+    border:2px solid #2ac4ea;
 }
 .header-right .dropdwn{
     position: relative;
@@ -310,7 +312,7 @@ body{
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: .1em;
-    padding:px;
+    padding:15px 0px;
 }
 .header-right ul li>a:hover, a:active{
     text-decoration: none;

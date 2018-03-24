@@ -4,11 +4,11 @@ block content
 	link(rel="stylesheet" type="text/css" href="/stylesheets/style.css")
 	<!-- End WOWSlider.com HEAD section -->
 	// Start WOWSlider.com BODY section
-	#wowslider-container1.col-sm-12.slider
+	#wowslider-container1
 		.ws_images
 			ul
 				li
-					img#wows1_0(src='/images/1.jpg', alt='1', title='1')
+					img#wows1_0(src='/images/1.jpg', alt='The first image', title='The first image')
 				li
 					img#wows1_1(src='/images/2.jpg', alt='2', title='2')
 				li
@@ -16,25 +16,31 @@ block content
 				li
 					img#wows1_3(src='/images/4.jpg', alt='4', title='4')
 				li
-					img#wows1_4(src='/images/5.jpg', alt='5', title='5')
+					img#wows1_4(src='/images/5.jpg', alt='html slideshow', title='5')
 				li
 					img#wows1_5(src='/images/6.jpg', alt='6', title='6')
 		.ws_bullets
 			div
-				a(href='#', title='1')
-					span 1
+				a(href='#', title='The first image')
+					span
+						img(src='/data1/tooltips/1.jpg', alt='The first image')
 				a(href='#', title='2')
-					span 2
+					span
+						img(src='/data1/tooltips/2.jpg', alt='2')
 				a(href='#', title='3')
-					span 3
+					span
+						img(src='/data1/tooltips/3.jpg', alt='3')
 				a(href='#', title='4')
-					span 4
+					span
+						img(src='/data1/tooltips/4.jpg', alt='4')
 				a(href='#', title='5')
-					span 5
+					span
+						img(src='/data1/tooltips/5.jpg', alt='5')
 				a(href='#', title='6')
-					span 6
+					span
+						img(src='/data1/tooltips/6.jpg', alt='6')
 		.ws_script(style='position:absolute;left:-99%')
-			a(href='#') 
+			a(href='#')
 		.ws_shadow
 		
 	.welcome.col-sm-10.col-sm-offset-1
