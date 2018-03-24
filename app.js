@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const expressValidator = require('express-validator');
 const passport = require('passport');
 const flash = require('connect-flash');
