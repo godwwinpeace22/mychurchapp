@@ -35,9 +35,15 @@ block content
                                     .panel-heading(style='background-image:url(' + sermon.imgSrc +')')
                                     .panel-body
                                         h3: a(href='/sermons/'+ sermon.link) #{sermon.title}
-                                        p By: #{sermon.by}
-                                        p Date: #{sermon.date}
-                                        p Text: #{sermon.bibleTxt}
+                                        p
+                                            span: i.fa.fa-user   
+                                            span  #{sermon.by} 
+                                        p
+                                            span: i.fa.fa-calendar   
+                                            span  #{sermon.date}
+                                        p
+                                            span Text:     
+                                            span  #{sermon.bibleTxt}
                                         p Service: #{sermon.service}
         script(src='/javascripts/jquery-3.2.0.js')
         script.

@@ -444,6 +444,17 @@ body{
 }
 .welcome .latest-events .fa-calenda{color:#2ac4ea;}
 
+.events-icon{
+    float:left;background:white;width:20%;height:50px;font-size:40px;
+}
+.events-txt{
+    float:left;background:pin;width:80%;height:50px;font-family:cursive
+}
+.events-txt h5{
+    margin-top:5px;margin-bottom:6px;
+}
+
+
 /* Newsletter */
 .newsletter{
     background-color: #fff;
@@ -614,8 +625,8 @@ footer ul p{
     .header-right .menus{
         display:none;
     }
-    .naver .pull-right{
-        float: none !important;
+    .header-right{
+        width:0px; /* set it to zero since the menu items are no longer there*/
     }
 }
 
@@ -681,14 +692,15 @@ footer ul p{
         width:80%;
         margin:auto;
     }
+    .events-icon{
+        width:10%;
+    }
+    .events-txt{
+        width:90%;
+    }
 	
 }
-@media (min-width:768px){
-	.bt-menu-trigger{
-		right:100px;
-	}
-	
-}
+
 @media (max-width:590px){
     .slider .caption a{
         width:25%;
@@ -718,6 +730,12 @@ footer ul p{
     }
 }
 @media (max-width:400px){
+    .events-icon{
+        width:18%;
+    }
+    .events-txt{
+        width:82%;
+    }
     footer .social{
         padding:20px 0px;
         width:inherit;
@@ -759,6 +777,11 @@ footer ul p{
     }
     .newsletter h2{
         font-size: 19px;
+    }
+}
+@media (max-width:291px){
+    .naver .header-left{
+        width:220px;
     }
 }
 @media (max-width:250px){

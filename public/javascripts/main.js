@@ -4,9 +4,12 @@ $(document).ready(function() {
   
 
   /* ================  Sermon Select Category ==========*/
-  
-  $('#byPastor').change(function(){
-
+  $('select').change((event)=>{
+    var selectdFiltr = event.currentTarget.value; //Get the value of the element whose event listeners triggered a specific event
+    window.location.href = `/sermons/filter/${selectdFiltr}`
+  });
+  /*$('#byPastor').change(function(){
+    console.log($(this).val());
     var pastor = $('#byPastor').val();
     window.location.href = `/sermons/filter/${pastor}`
   });
@@ -19,23 +22,24 @@ $(document).ready(function() {
   $('#bySeries').change(function(){
     var series = $('#bySeries').val();
     window.location.href = `/sermons/filter/${series}`
-  })
+  })*/
 
 
 
 
   /*<-----*Side Navigation controls ---->*/
-  $('.openbtn').click(function(){
+  $('.openbtn').on('click touchstart', function(e){
+    e.preventDefault
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px"; 
     $('.openbtn').css({opacity:'0'})
   });
 
 
-  $('.dropdwn').click(function(){
+  $('.dropdwn').on('click touchstart', function(){
     $('.dropdwn-content').toggle(500);
   })
-  $('.closebtn').click(function(){
+  $('.closebtn').on('click touchstart', function(){
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
     $('.openbtn').css({opacity:'1'})

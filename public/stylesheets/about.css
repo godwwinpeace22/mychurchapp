@@ -134,6 +134,8 @@ body  {
 }
 .form button{
 	background:#1abc9c;
+	padding:10px 100px;
+	margin-bottom:5px;
 }
 /* Events*/
 .events{
@@ -203,6 +205,13 @@ body  {
 	.about-pastors .profile img{
 		display: bloc;
 		margin:auto;
+		position: relative;
+		top:15px;
+	}
+	.about-pastors .profile p{
+		margin-top:20px;
+		color:#675a5a;
+		font-weight: bold;
 	}
 }
 @media (max-width:550px){
@@ -216,7 +225,7 @@ body  {
 		font-size: 3em;
 	}
 	.about-pastors .profile{
-		width:250px;
+		width:100%;
 		
 	}
 }
@@ -234,5 +243,15 @@ body  {
 	}
 	header .about-activities h2{
 		font-size:22px;
+	}
+}
+@media (max-width:270px){
+	.about-pastors .profile img{
+		width:150px;
+		height:150px;
+		
+	}
+	.form button{
+		padding:10px 50px;
 	}
 }

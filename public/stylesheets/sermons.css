@@ -27,6 +27,7 @@ body{
     line-height: 22px;
     color: #555;
     background-color: #fff;
+    margin-bottom:3%; /* when the screen gets smaller*/
     box-shadow: 0 1px 2px rgba(0,0,0,0.16)!important;
     -moz-box-shadow: 0 1px 2px rgba(0,0,0,0.16)!Important;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.16)!Important;
@@ -61,7 +62,9 @@ body{
     line-height: 1;
     color:#796f6f;
 }
-
+.panel-body .fa-user,.panel-body .fa-calendar,.fa-book{
+    color:#2ac4ea;
+}
 
 /* readsermon*/
 .read .panel{

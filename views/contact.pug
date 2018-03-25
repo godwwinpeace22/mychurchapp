@@ -22,15 +22,15 @@ block content
 				.form-left.col-sm-6
 					.form-group
 						label First Name
-						input.form-control(name='fname' type='text')
+						input.form-control(name='fname' type='text' required)
 					.form-group
 						label Last Name
-						input.form-control(type="text" name='lname' )
+						input.form-control(type="text" name='lname' required)
 					.form-group
 						label Your Email
-						input.form-control(type="text" name='email')
+						input.form-control(type="text" name='email' required)
 				.form-right.col-sm-6
 					.form-group
 						label(for="msg") Your Message
-						textarea(name="msg", cols="65", rows="10")
-				button.btn.btn-default.center-block(style='padding:10px 100px;margin-bottom:5px;') Submit
+						textarea(name="msg", cols="65", rows="10" required)
+				button.btn.btn-default.center-block Submit
