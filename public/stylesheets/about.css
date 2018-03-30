@@ -137,6 +137,13 @@ body  {
 	padding:10px 100px;
 	margin-bottom:5px;
 }
+form .bg-danger{
+	padding:5px;
+	border-radius:4px;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-o-border-radius:4px;
+}
 /* Events*/
 .events{
 	padding:0;

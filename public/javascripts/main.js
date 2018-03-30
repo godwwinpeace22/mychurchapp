@@ -28,7 +28,7 @@ $(document).ready(function() {
 
 
   /*<-----*Side Navigation controls ---->*/
-  $('.openbtn').on('click touchstart', function(e){
+  $('.openbtn').on('click', function(e){
     e.preventDefault
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px"; 
@@ -36,10 +36,10 @@ $(document).ready(function() {
   });
 
 
-  $('.dropdwn').on('click touchstart', function(){
+  $('.dropdwn').on('click', function(){
     $('.dropdwn-content').toggle(500);
   })
-  $('.closebtn').on('click touchstart', function(){
+  $('.closebtn').on('click', function(){
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft= "0";
     $('.openbtn').css({opacity:'1'})

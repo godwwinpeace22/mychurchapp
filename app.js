@@ -19,7 +19,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 const index = require('./routes/index');
 const dashboard = require('./routes/dashboard');
-const users = require('./routes/users');
+const auth = require('./routes/users');
 
 const app = express();
 // Set security headers
@@ -48,9 +48,6 @@ app.use(require('express-session')({
         uri: process.env.database,
         databaseName: 'lighthouseparishapp',
         collection: 'sessions'
-      }).on('error', function(error) {
-        assert.ifError(error);
-        assert.ok(false);
       })
 }));
 app.use(flash());
@@ -60,7 +57,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/dashboard', dashboard);
-app.use('/auth', users);
+app.use('/auth', auth);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -15,8 +15,8 @@ html(lang="en")
 		title=title
 		link(rel='shortcut icon', href='/favicon.ico')
 		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous")
-		link(rel="stylesheet", href="/stylesheets/offline-language-english.css")
-		link(rel="stylesheet", href="/stylesheets/offline-theme-chrome.css")
+		//link(rel="stylesheet", href="/stylesheets/offline-language-english.css")
+		//link(rel="stylesheet", href="/stylesheets/offline-theme-chrome.css")
 		link(rel='stylesheet', href='/stylesheets/main.css')
 		script(src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous")
 		link(href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,600|Lobster|Titillium+Web" rel="stylesheet")
@@ -67,7 +67,7 @@ html(lang="en")
 								p(style='font-size:12px;') The city of His presence
 					.header-right.pull-right
 						ul.open
-							span.openbtn &#9776;
+							span.openbtn: i.fa.fa-bars
 						ul.menus
 							
 							li.active: a(href='/') Home
@@ -90,29 +90,29 @@ html(lang="en")
 			.newsletter.col-sm-12
 				h2.text-center Sign Up For Email Updates
 				p.text-center Sign up with your email address to receive news and updates
-				form(action="/contact" method="POST")
+				form(action="/contact/newsletter" method="POST")
 					.inputs.center-block.clearfix
-						input.pull-left(type="text" placeholder="Enter Your Email Address" name='email')
+						input.pull-left(type="mail" placeholder="Enter Your Email Address" name='email' required )
 						input.pull-right.btn.btn-default(type="submit" value='Sign Up')
 				p.text-center We respect your privacy
-				.social
+				.social(style='display:none')
 					p.text-center
-						span(style='margin-right:5px;'): a(href=''): i.fab.fa-facebook-f   
-						span: a(href=''): i.fa.fa-envelope
+						span(style='margin-right:5px;'): a(href='#'): i.fab.fa-facebook-f   
+						span: a(href='#'): i.fa.fa-envelope
 			footer.footer.col-sm-12.clearfix
 				.col-sm-10.col-sm-offset-1
 					.col-sm-12
 						.social.center-block
-							a(href="")
+							a(href="#")
 								p.text-center
 									i.fab.fa-facebook-f 
-							a(href="")
+							a(href="#")
 								p.text-center
 									i.fab.fa-twitter
-							a(href="")
+							a(href="#")
 								p.text-center
 									i.fab.fa-google-plus-g
-							a(href="")
+							a(href="#")
 								p.text-center
 									i.fab.fa-vimeo-v
 					hr.col-sm-12
@@ -151,7 +151,7 @@ html(lang="en")
 			-$('.slider').css({height:elem -foo})
 		//script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 		script(defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
-		script(src="/javascripts/offline.min.js" defer)
+		//script(src="/javascripts/offline.min.js" defer)
 		script(src='/javascripts/main.js' async)
 		// Google Analytics: change UA-XXXXX-Y to be your site's ID.
 		//script.

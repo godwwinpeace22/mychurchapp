@@ -19,18 +19,21 @@ block content
 					span  | info@rccglighthouse.com.ng
 		.form.col-sm-10.col-sm-offset-1
 			form(action="/contact" Method='POST').col-sm-12
+				if(errors)
+					each error in errors
+						p.bg-danger=error.msg
 				.form-left.col-sm-6
 					.form-group
 						label First Name
-						input.form-control(name='fname' type='text' required)
+						input.form-control(type='text' name='fname' value=fname? fname : '' required)
 					.form-group
 						label Last Name
-						input.form-control(type="text" name='lname' required)
+						input.form-control(type="text" name='lname' value=lname? lname : '' required)
 					.form-group
 						label Your Email
-						input.form-control(type="text" name='email' required)
+						input.form-control(type="email" name='email' value=email? email : '' required)
 				.form-right.col-sm-6
 					.form-group
 						label(for="msg") Your Message
-						textarea(name="msg", cols="65", rows="10" required)
+						textarea(name="msg", cols="65", rows="10" class=errors && errors.param == msg ? bg-danger : "" value=msg? msg : '' required)
 				button.btn.btn-default.center-block Submit

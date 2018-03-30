@@ -484,6 +484,7 @@ body{
 }
 .newsletter form input:first-of-type{
     width:70%;
+    color:#333;
 }
 .newsletter form input:nth-of-type(2){
     width:25%;

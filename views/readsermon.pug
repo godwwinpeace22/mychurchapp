@@ -8,8 +8,12 @@ block content
 				.panel-body
 					if(sermon)
 						h3 #{sermon.title}
-						li By: Pst #{sermon.by}
-						li Date: #{sermon.date}
+						li
+							span: i.fa.fa-user   
+							span  Pst #{sermon.by}
+						li
+							span: i.fa.fa-calendar    
+							span  #{sermon.date}
 						li Text: #{sermon.bibleTxt}
 						li Service: #{sermon.service}
 					hr

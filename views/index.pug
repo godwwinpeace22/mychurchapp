@@ -1,53 +1,35 @@
 extends layout
 block content
 	<!-- Start WOWSlider.com HEAD section -->
+	link(rel="stylesheet" type="text/css" href="/stylesheets/slider.css")
 	link(rel="stylesheet" type="text/css" href="/stylesheets/style.css")
+	script(type='text/javascript', src='/javascripts/jssor.slider-27.1.0.min.js')
+	script(type='text/javascript', src='/javascripts/slider.js')
 	<!-- End WOWSlider.com HEAD section -->
-	// Start WOWSlider.com BODY section
-	#wowslider-container1
-		.ws_images
-			ul
-				li
-					img#wows1_0(src='/images/1.jpg', alt='The first image', title='The first image')
-				li
-					img#wows1_1(src='/images/2.jpg', alt='2', title='2')
-				li
-					img#wows1_2(src='/images/3.jpg', alt='3', title='3')
-				li
-					img#wows1_3(src='/images/4.jpg', alt='4', title='4')
-				li
-					img#wows1_4(src='/images/5.jpg', alt='html slideshow', title='5')
-				li
-					img#wows1_5(src='/images/6.jpg', alt='6', title='6')
-		.ws_bullets
-			div
-				a(href='#', title='The first image')
-					span
-						img(src='/data1/tooltips/1.jpg', alt='The first image')
-				a(href='#', title='2')
-					span
-						img(src='/data1/tooltips/2.jpg', alt='2')
-				a(href='#', title='3')
-					span
-						img(src='/data1/tooltips/3.jpg', alt='3')
-				a(href='#', title='4')
-					span
-						img(src='/data1/tooltips/4.jpg', alt='4')
-				a(href='#', title='5')
-					span
-						img(src='/data1/tooltips/5.jpg', alt='5')
-				a(href='#', title='6')
-					span
-						img(src='/data1/tooltips/6.jpg', alt='6')
-		.ws_script(style='position:absolute;left:-99%')
-			a(href='#')
-		.ws_shadow
+	.col-sm-12#jssor_1(style="position:relative;margin:0 auto;top:0px;left:0px;width:1200px;height:515px;overflow:hidden;visibility:hidden;")
+		<!-- Loading Screen -->
+		div(data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);")
+			img(style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="/images/spin.svg")
+		div(data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:1200px;height:515px;overflow:hidden;")
+			div(data-fillmode="0" data-p="210.00")
+				img(data-u="image" src="/images/home.jpg")
+				div(u="thumb") 
+			div(data-fillmode="0" data-p="210.00")
+				img(data-u="image" src="/images/flier.jpg")
+				div(u="thumb")
+		<!-- Arrow Navigator -->
+		div.jssora061(data-u="arrowleft" style="width:55px;height:55px;top:0px;left:25px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75")
+			svg(viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;")
+				path.a(d="M11949,1919L5964.9,7771.7c-127.9,125.5-127.9,329.1,0,454.9L11949,14079")
+		div.jssora061(data-u="arrowright" style="width:55px;height:55px;top:0px;right:25px;" data-autocenter="2" data-scale="0.75" data-scale-right="0.75")
+			svg(viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;")
+				path.a(d="M5869,1919l5984.1,5852.7c127.9,125.5,127.9,329.1,0,454.9L5869,14079")
 		
 	.welcome.col-sm-10.col-sm-offset-1
 		.col-sm-8.who-we-are
 			h3 You are welcome
-			p Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam omnis maxime architecto eius ducimus! Tempora doloremque totam laudantium magnam veritatis voluptas veniam quia corporis aut quos, hic saepe voluptatibus quae?
-			p Lorem ipsum dolor sit amet ctus repellendus quasi eveniet at eum dolor animi repudiandae vel officia tempora sapiente, qui laudantium?
+			p We are a parish of the Redeemed Christian Church of God Goshen area of Ebonyi Province 1 Abakaliki, Nigeria. Our desire is to partner with Jesus to both see His children awoken to their true identity as sons and daughters of God and see His kingdom established on earth in its fullest expression.
+			p We beleive that here you will find what you are looking for. You are welcome!
 		.col-sm-4.latest-events
 			h3 Upcoming Events
 			div.clear-fix
@@ -76,8 +58,10 @@ block content
 						.nth-sermon
 							h3: a(href='/sermons/' + sermon.link) #{sermon.title}
 							p #{sermon.date}
-	script(type='text/javascript', src='/javascripts/wowslider.js')
-	script(type='text/javascript', src='/javascripts/script.js')
+	script.
+		jssor_1_slider_init()
+							
+	
 			
 		
 

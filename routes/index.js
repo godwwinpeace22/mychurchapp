@@ -77,11 +77,29 @@ router.post('/sermons/:sermonLink', (req,res,next)=>{
     sermonRef:req.params.sermonLink,
     index:new Date().getTime(),
     date:moment().format("D MMM YYYY")
-  })
-  comment.save(function(err,done){
-    if(err) throw err;
-    res.redirect('/sermons/' + req.params.sermonLink);
-  })
+  });
+  req.checkBody('name', 'This cannot be empty').notEmpty();
+  req.checkBody('comment', 'This cannot be empty').notEmpty();
+  req.checkBody('email', 'please provide a valid email address').isEmail();
+
+  let errors = req.validationErrors();
+  if(errors){
+    //there are errors in the form
+    res.render('readsermon', {
+      errors:errors,
+      comment:comment,
+
+    });
+  }
+  else{
+    // there are no errors in the form
+    comment.save(function(err,done){
+      if(err) throw err;
+      res.redirect('/sermons/' + req.params.sermonLink);
+    });
+  }
+  
+  
 
 });
 
@@ -94,6 +112,7 @@ router.get('/gallery', (req,res,next)=>{
   });
 })
 router.get('/contact', (req,res,next)=>{
+  console.log(req.url)
   res.render('contact', {title:'Contact Us'})
 });
 
@@ -109,26 +128,71 @@ var transporter = nodemailer.createTransport({
 });
 router.post('/contact', (req,res,next)=>{
   // setup email data
-  var mailOptions = { 
-    from: req.body.email,
-    to: process.env.email,
-    subject: 'I Am New Here',
-    text: `Hi, I am ${req.body.fname} ${req.body.lname}. 
-      ${req.body.msg}` 
-  };
-
-  // send mail with defined transport object
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-      //console.log(error);
-    } else {
-      //console.log('Email sent: ' +  info.response +', ' + info.messageId);
-      res.render('success', {
-        title:'Email recieved',
-        msg:'Thank you for your interest!. We will get in touch soon'
-      });
-    }
-  });
+  req.checkBody('fname', 'Please Enter your first name').notEmpty();
+  req.checkBody('lname', 'Please Enter your last name').notEmpty();
+  req.checkBody('email', 'Please Enter a valid email address').isEmail();
+  req.checkBody('msg', 'Please Enter your message').notEmpty();
+  let errors = req.validationErrors();
+  if(errors){
+    console.log(errors);
+    res.render('contact', {
+      errors:errors,
+      msg:'please edit input',
+      lname:req.body.lname,
+      fname:req.body.fname,
+      email:req.body.email,
+      msg:req.body.msg
+    });
+  }
+  else{
+    var mailOptions = { 
+      from: req.body.email,
+      to: process.env.email,
+      subject: 'I Am New Here',
+      text: `Hi, I am ${req.body.fname} ${req.body.lname}. 
+        ${req.body.msg}` 
+    };
+  
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        //console.log(error);
+      }
+      else {
+        //console.log('Email sent: ' +  info.response +', ' + info.messageId);
+        res.render('success', {
+          title:'Email recieved',
+          msg:'Thank you for your interest!. We will get in touch soon'
+        });
+      }
+    });
+  }
+  
+});
+router.post('/contact/newsletter', (req,res,next)=>{
+  // setup email data
+    var mailOptions = { 
+      from: req.body.mail,
+      to: process.env.email,
+      subject: 'I subscribe to the monthly newsletter',
+      text: `Hi,
+      I wish to subscribe to the monthly newsletter` 
+    };
+  
+    // send mail with defined transport object
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        //console.log(error);
+      }
+      else {
+        //console.log('Email sent: ' +  info.response +', ' + info.messageId);
+        res.render('success', {
+          title:'Email recieved',
+          msg:'Thank you for your interest!. We will get in touch soon'
+        });
+      }
+    });
+  
 });
 
 module.exports = router;
