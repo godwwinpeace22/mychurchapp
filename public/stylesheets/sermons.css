@@ -73,7 +73,7 @@ body{
 .read .panel-heading{
     height: 200px;
 }
-.read .panel-body li{
+.read .panel-body>li{
     display: inline-block;
     background-color: #ecebeb;
     margin-right:5px;
@@ -84,9 +84,11 @@ body{
     margin-top:20px;
 }
 .read .panel-body .text p{
-    font-size: 18px;
-    font-weight: lighter;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 20px;
 }
+
 .read .replies .views{
     min-height:50px;
     width:100%;
