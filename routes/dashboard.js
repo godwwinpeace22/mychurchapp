@@ -34,13 +34,13 @@ router.get('/newsermon',restrictAccess, (req,res,next)=>{
 router.post('/newsermon',restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
 
   //upload a file
-  fs.writeFile('public/uploads/temp.jpg', req.file.buffer, (err, temp)=>{
+  fs.writeFile('temp.jpg', req.file.buffer, (err, temp)=>{
     cloudinary.config({
       cloud_name: process.env.cloud_name,
       api_key:process.env.api_key,
       api_secret:process.env.api_secret,
     });
-    cloudinary.uploader.upload(req.file.path, function(result) {
+    cloudinary.uploader.upload('temp.jpg', function(result) {
       var sermon = new Sermon({
         title:req.body.title,
         link:(req.body.title).split(' ').join('-'),
