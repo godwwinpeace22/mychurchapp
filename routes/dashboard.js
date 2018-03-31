@@ -76,7 +76,7 @@ router.get('/newmedia',restrictAccess, (req,res,next)=>{
 // Add Media
 router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
   //upload a file
-  fs.writeFile('public/uploads/temp.jpg', req.file.buffer, (err, temp)=>{
+  fs.writeFile('temp.jpg', req.file.buffer, (err, temp)=>{
     cloudinary.config({
       cloud_name: process.env.cloud_name,
       api_key:process.env.api_key,
