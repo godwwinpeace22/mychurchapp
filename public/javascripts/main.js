@@ -4,7 +4,7 @@ $(document).ready(function() {
   
 
   /* ================  Sermon Select Category ==========*/
-  $('select').change((event)=>{
+  $('.filter select').change((event)=>{
     var selectdFiltr = event.currentTarget.value; //Get the value of the element whose event listeners triggered a specific event
     window.location.href = `/sermons/filter/${selectdFiltr}`
   });
