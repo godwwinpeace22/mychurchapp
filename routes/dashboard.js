@@ -1,20 +1,13 @@
 const express = require('express');
+const fs = require('fs');
 const router = express.Router();
 const Sermon = require('../models/sermon');
 const Image = require('../models/image');
 const moment = require('moment');
 const multer  = require('multer');
 const cloudinary = require('cloudinary');
-let storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-	  cb(null, 'public/uploads/');
-  },
-  filename: function (req, file, cb) {
-	  cb(null, file.fieldname + Date.now() )
-  }
-});
+let storage = multer.memoryStorage(); // Store uploaded images in memory, return buffer
 let upload = multer({ storage: storage });
-
 
 let restrictAccess = function(req,res, next){
 	if(req.user){
@@ -41,34 +34,35 @@ router.get('/newsermon',restrictAccess, (req,res,next)=>{
 router.post('/newsermon',restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
 
   //upload a file
-  cloudinary.config({
-    cloud_name: process.env.cloud_name,
-    api_key:process.env.api_key,
-    api_secret:process.env.api_secret,
-  });
-  cloudinary.uploader.upload(req.file.path, function(result) {
-    var sermon = new Sermon({
-      title:req.body.title,
-      link:(req.body.title).split(' ').join('-'),
-      index: Date.now(),
-      imgSrc: result.url,
-      fullData:result,
-      by:req.body.presentedBy,
-      bibleTxt:req.body.bibleTxt,
-      service:req.body.service,
-      series:req.body.series,
-      date:moment(req.body.date).format("D MMM YYYY"),
-      category:req.body.category,
-      txt:req.body.txt
+  fs.writeFile('public/uploads/temp.jpg', req.file.buffer, (err, temp)=>{
+    cloudinary.config({
+      cloud_name: process.env.cloud_name,
+      api_key:process.env.api_key,
+      api_secret:process.env.api_secret,
     });
+    cloudinary.uploader.upload(req.file.path, function(result) {
+      var sermon = new Sermon({
+        title:req.body.title,
+        link:(req.body.title).split(' ').join('-'),
+        index: Date.now(),
+        imgSrc: result.url,
+        fullData:result,
+        by:req.body.presentedBy,
+        bibleTxt:req.body.bibleTxt,
+        service:req.body.service,
+        series:req.body.series,
+        date:moment(req.body.date).format("D MMM YYYY"),
+        category:req.body.category,
+        txt:req.body.txt
+      });
 
-    sermon.save(function(err, done){
-      if(err) throw err;
-      console.log('saving sermon..... sermon saved');
-      res.redirect('/dashboard/newsermon');
-    });
-  },{folder:'lighthouseparish', public_id: req.file.filename});
-  
+      sermon.save(function(err, done){
+        if(err) throw err;
+        console.log('saving sermon..... sermon saved');
+        res.redirect('/dashboard/newsermon');
+      });
+    },{folder:'lighthouseparish', public_id: req.file.fieldname + Date.now()});
+  });
 });
 
 
@@ -82,26 +76,28 @@ router.get('/newmedia',restrictAccess, (req,res,next)=>{
 // Add Media
 router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
   //upload a file
-  cloudinary.config({
-    cloud_name: process.env.cloud_name,
-    api_key:process.env.api_key,
-    api_secret:process.env.api_secret,
+  fs.writeFile('public/uploads/temp.jpg', req.file.buffer, (err, temp)=>{
+    cloudinary.config({
+      cloud_name: process.env.cloud_name,
+      api_key:process.env.api_key,
+      api_secret:process.env.api_secret,
+    });
+    cloudinary.uploader.upload('public/uploads/temp.jpg', function(result) {
+      var image = new Image({
+        index: Date.now(),
+        imgSrc: result.url,
+        fullData:result,
+        imgDetail:req.body.imgDetail,
+        date:moment(req.body.date).format("D MMM YYYY")
+      });
+  
+      image.save(function(err, done){
+        if(err) throw err;
+        console.log('saving media..... media uploaded successfully and saved');
+        res.redirect('/dashboard/newmedia');
+      });
+    },{folder:'lighthouseparish/gallery', public_id: req.file.fieldname + Date.now()});
   });
-  cloudinary.uploader.upload(req.file.path, function(result) {
-    var image = new Image({
-      index: Date.now(),
-      imgSrc: result.url,
-      fullData:result,
-      imgDetail:req.body.imgDetail,
-      date:moment(req.body.date).format("D MMM YYYY")
-    });
-
-    image.save(function(err, done){
-      if(err) throw err;
-      console.log('saving media..... media uploaded successfully and saved');
-      res.redirect('/dashboard/newmedia');
-    });
-  },{folder:'lighthouseparish/gallery', public_id: req.file.filename});
 });
 
 module.exports = router;
