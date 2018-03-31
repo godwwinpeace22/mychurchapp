@@ -6,7 +6,7 @@ const Sermon = require('../models/sermon');
 const Comment = require('../models/comment');
 const Image = require('../models/image');
 const Recaptcha = require('express-recaptcha');
-const recaptcha = new Recaptcha(process.env.siteKey,process.env.secretKey);
+const recaptcha = new Recaptcha(process.env.siteKey,process.env.secret);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
