@@ -82,7 +82,7 @@ router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)
       api_key:process.env.api_key,
       api_secret:process.env.api_secret,
     });
-    cloudinary.uploader.upload('public/uploads/temp.jpg', function(result) {
+    cloudinary.uploader.upload('temp.jpg', function(result) {
       var image = new Image({
         index: Date.now(),
         imgSrc: result.url,
