@@ -1,7 +1,6 @@
 extends layout
 block content
 	link(rel="stylesheet", href="/stylesheets/sermons.css")
-	script(src='https://www.google.com/recaptcha/api.js')
 	.read.col-sm-8.col-sm-offset-2
 		.card.col-sm-12
 			.panel.panel-default
@@ -47,7 +46,5 @@ block content
 					.input-right.pull-right
 						label Email*
 						input(type="text" name='email' required)
-				.form--group
-					.g-recaptcha(data-sitekey="6LfJE1AUAAAAAL_HngzIFaTz0PkqZNqzqSSAQPal" required)
 				.form-group
 					button.btn.btn-primary(type="submit") Submit

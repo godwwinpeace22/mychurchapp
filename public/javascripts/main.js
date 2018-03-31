@@ -1,8 +1,8 @@
 //$('.home-banner').css({height:$(window).height()})
 //console.log($(window).height())
+
 $(document).ready(function() {
   
-
   /* ================  Sermon Select Category ==========*/
   $('.filter select').change((event)=>{
     var selectdFiltr = event.currentTarget.value; //Get the value of the element whose event listeners triggered a specific event

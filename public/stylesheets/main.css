@@ -98,6 +98,7 @@ body{
     font-family: 'Titillium Web', sans-serif;
     overflow-x: hidden;
 }
+
 .naver{
     width:100%;
     min-height:10px;
@@ -318,7 +319,10 @@ body{
 .header-right ul li>a:hover, a:active{
     text-decoration: none;
 }
-
+.clas{
+    background-color:#2ac4ea;
+}
+.clasy{color:#fff !important;}
 .slider{
     background-color: grey;
     background-image: url(/images/slider-bgrd.jpg);

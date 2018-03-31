@@ -28,6 +28,7 @@ html(lang="en")
 			p.browserupgrade
 				strong outdated
 				a(href='https://browsehappy.com/') upgrade your browser
+		
 	body
 		// Main content
 		noscript Sorry, your browser does not support JavaScript!
@@ -70,11 +71,11 @@ html(lang="en")
 							span.openbtn: i.fa.fa-bars
 						ul.menus
 							
-							li.active: a(href='/') Home
-							li: a(href='/about') About Us
-							li: a(href='/events') Upcoming
+							li#home: a(href='/') Home
+							li#about: a(href='/about') About Us
+							li#events: a(href='/events') Upcoming
 							.dropdwn
-								li: a(href='#') Media
+								li#sermons: a(href='#') Media
 									span.caret
 									ul.dropdwn-content
 										li
@@ -83,8 +84,8 @@ html(lang="en")
 											a(href="/gallery") Photo Gallery
 										li
 											a(href="/#videos") Videos
-							li: a(href='#') Give
-							li: a(href='/contact') Contact
+							li#give: a(href='#') Give
+							li#contact: a(href='/contact') Contact
 
 			block content
 			.newsletter.col-sm-12
@@ -145,10 +146,17 @@ html(lang="en")
 				
 		
 		script.
-			var elem = $(window).height();
-			var foo = $('.header-nav-bgrd').outerHeight();
-			//alert(foo)
-			-$('.slider').css({height:elem -foo})
+			var pth = location.pathname
+			if(pth == '/'){
+				$('#home').addClass('clas');
+				$('#home > a').addClass('clasy');
+			}
+			else{
+				var theMainPath = location.pathname.split('/')[1];
+				$('#' + theMainPath).addClass('clas');
+				$('#' + theMainPath + ' > a').addClass('clasy');
+			}
+			//$('#' + theMainPath).children().addClass('clasy'); // you can also use this
 		//script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
 		script(defer src="https://use.fontawesome.com/releases/v5.0.4/js/all.js")
 		//script(src="/javascripts/offline.min.js" defer)

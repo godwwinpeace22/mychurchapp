@@ -15,7 +15,8 @@ router.get('/', function(req, res, next) {
     //console.log(sermons)
     res.render('index', {
       title: 'Home | RCCG Lighthouse Parish',
-      sermons:sermons
+      sermons:sermons,
+      path:'home'
     });
   }); 
   
