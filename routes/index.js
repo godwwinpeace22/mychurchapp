@@ -5,8 +5,8 @@ const moment = require('moment');
 const Sermon = require('../models/sermon');
 const Comment = require('../models/comment');
 const Image = require('../models/image');
-const Recaptcha = require('express-recaptcha');
-const recaptcha = new Recaptcha(process.env.siteKey,process.env.secret);
+//const Recaptcha = require('express-recaptcha');
+//const recaptcha = new Recaptcha(process.env.siteKey,process.env.secret);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -53,7 +53,7 @@ router.get('/sermons/filter/:filter', (req,res,next)=>{
   });
 });
 // Read sermon
-router.get('/sermons/:sermonLink', recaptcha.middleware.render, (req,res,next)=>{
+router.get('/sermons/:sermonLink'  /*, recaptcha.middleware.render*/, (req,res,next)=>{
   Sermon.findOne({link:req.params.sermonLink}).exec(function(err, sermon){
     if(err) throw err;
     //console.log(sermon);
@@ -64,14 +64,14 @@ router.get('/sermons/:sermonLink', recaptcha.middleware.render, (req,res,next)=>
         title:'Sermons',
         sermon:sermon,
         comments:comments,
-        captcha:res.recaptcha
+        //captcha:res.recaptcha
       });
     })
     
   });
 });
 //Post Comments
-router.post('/sermons/:sermonLink', recaptcha.middleware.verify, (req,res,next)=>{
+router.post('/sermons/:sermonLink', /*recaptcha.middleware.verify,*/ (req,res,next)=>{
   // TODO ----> Run Valildation For Errors
   let comment = new Comment({
     name:req.body.name,
@@ -96,19 +96,19 @@ router.post('/sermons/:sermonLink', recaptcha.middleware.verify, (req,res,next)=
   else{
     // there are no errors in the form
     // check reCaptcha
-    if(!req.recaptcha.error){
+    /*if(!req.recaptcha.error){
       res.render('readsermon', {
         errors:errors,
         comment:comment,
         captcha: 'please complete recatcha'
       });
-    }
-    else{
+    }*/
+    //else{
       comment.save(function(err,done){
         if(err) throw err;
         res.redirect('/sermons/' + req.params.sermonLink);
       });
-    }
+    //}
     
   }
   
