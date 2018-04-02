@@ -25,7 +25,7 @@ const app = express();
 // Set security headers
 const helmet = require('helmet');
 
-//app.use(compression()); //Compress all routes. // I don't understand the part of the documentation about server-sent events
+app.use(compression()); //Compress all routes. // I don't understand the part of the documentation about server-sent events
 
 app.use(helmet())
 // view engine setup
