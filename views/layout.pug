@@ -28,7 +28,15 @@ html(lang="en")
 			p.browserupgrade
 				strong outdated
 				a(href='https://browsehappy.com/') upgrade your browser
-		
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-117131997-1")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-117131997-1');
+
 	body
 		// Main content
 		noscript Sorry, your browser does not support JavaScript!
