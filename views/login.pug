@@ -1,17 +1,22 @@
 extends layout
 block content
 	link(rel="stylesheet", href="/stylesheets/about.css")
-	.login.col-sm-6.col-sm-offset-3(style='height:500p;')
-		h3(style='color:#999;') Please #{title}
-		if msg
-			p.alert.alert-danger!=msg
-		form(method='POST', action='')
-			.form-group
-			input.form-control(name='username', type='text', placeholder='username', required)
-			.form-group
-			input.form-control(name='password', type='password', placeholder='password', required)
-			.form-group
-			input.btn.btn-primary(name='login', type='submit', value='Login')
+	.login.col-sm-12(style='padding:0px;')
+		.col-sm-10.col-sm-offset-1
+			.col-sm-6.col-sm-offset-3(style='min-height:300px;margin-top:5%;')
+				h3(style='color:#fff;') Please #{title}
+				if msg
+					p.alert.alert-danger!=msg
+				form(method='POST', action='')
+					.form-group
+						input.form-control(name='username', style='padding:30px;border-bottom-right-radius:0px;border-bottom-left-radius:0px;border-top-right-radius:10px;border-top-left-radius:10px;' type='text', placeholder='username', required)
+						//.form-group
+						input.form-control(name='password', style='padding:30px;border-top-right-radius:0px;border-top-left-radius:0px;border-bottom-right-radius:10px;border-bottom-left-radius:10px;' type='password', placeholder='password', required)
+					.form-group
+						input.btn.btn-primary.form-control(name='login', type='submit', value='Login' style='background-color:greenyellow;')
+					p(style='color:#fff;') Don't have an account yet ?   
+						span: a(href="/auth/register" style='color:greenyellow;margin-left:5px;')   Create One
+
 	script(src='/javascripts/jquery-3.2.0.js')
-	script.
+	//script.
 		-$('.login').css({height:$(window).height()-153 + 'px'});

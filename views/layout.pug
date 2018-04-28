@@ -58,13 +58,15 @@ html(lang="en")
 			a(href='#') Give
 			a(href='/contact') Contact
 		#main(style='padding:0px;')
+			// this is for the quiz. don't touch!
+			#startTime(startTime=startTime)
 			.naver.clearfix
 				.header-liner
 					p.pull-right
 						a(href="/#")
 							span: i.fa.fa-phone-square 
 							span  +2348038017249
-						a(href="/#") Login
+						a(href="/auth/login") Login
 				.header-nav-bgrd.clearfix
 					.header-left.pull-left
 						.logos.clearfix

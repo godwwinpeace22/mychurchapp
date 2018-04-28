@@ -3,6 +3,8 @@ const fs = require('fs');
 const router = express.Router();
 const Sermon = require('../models/sermon');
 const Image = require('../models/image');
+const Question = require('../models/question');
+const bcrypt = require('bcryptjs')
 const moment = require('moment');
 const multer  = require('multer');
 const cloudinary = require('cloudinary');
@@ -17,13 +19,27 @@ let restrictAccess = function(req,res, next){
 	  res.redirect('/auth/login');
 	}
 }
-
+//allow access to Master only.
+let masterLogin = function(req,res,next){
+	bcrypt.compare(process.env.masterPassword,req.user.password,  function(err, response) {
+		if(err) throw err;
+		console.log(response);
+		// res === true || res === false
+		if(req.user.username == process.env.masterUsername && response == true){
+			next();
+		}
+		else{
+      req.flash('error', 'You are not authorized to access that page')
+			res.redirect('/auth/login');
+		}
+	});
+}
 
 /* GET users listing. */
-router.get('/', restrictAccess, function(req, res, next) {
+router.get('/', restrictAccess, masterLogin, function(req, res, next) {
   res.render('newsermon', {title:'Dashboard'});
 });
-router.get('/newsermon',restrictAccess, (req,res,next)=>{
+router.get('/newsermon',restrictAccess, masterLogin, (req,res,next)=>{
   res.render('newsermon', {
     title:'Add New Sermon'
   });
@@ -31,7 +47,7 @@ router.get('/newsermon',restrictAccess, (req,res,next)=>{
 });
 
 //POST sermon
-router.post('/newsermon',restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
+router.post('/newsermon',restrictAccess, masterLogin, upload.single('imgSrc'), (req,res,next)=>{
 
   //upload a file
   fs.writeFile('temp.jpg', req.file.buffer, (err, temp)=>{
@@ -67,14 +83,14 @@ router.post('/newsermon',restrictAccess, upload.single('imgSrc'), (req,res,next)
 
 
 // Get media
-router.get('/newmedia',restrictAccess, (req,res,next)=>{
+router.get('/newmedia',restrictAccess, masterLogin, (req,res,next)=>{
   res.render('newmedia', {
     title:'Add New Media File'
   });
   
 });
 // Add Media
-router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)=>{
+router.post('/newmedia', restrictAccess, masterLogin, upload.single('imgSrc'), (req,res,next)=>{
   //upload a file
   fs.writeFile('temp.jpg', req.file.buffer, (err, temp)=>{
     cloudinary.config({
@@ -97,6 +113,26 @@ router.post('/newmedia', restrictAccess, upload.single('imgSrc'), (req,res,next)
         res.redirect('/dashboard/newmedia');
       });
     },{folder:'lighthouseparish/gallery', public_id: req.file.fieldname + Date.now()});
+  });
+});
+
+router.get('/addquestions', restrictAccess, masterLogin, (req,res)=>{
+  res.render('addquestions', {title:'Add Questions'})
+});
+router.post('/addquestions', restrictAccess,masterLogin, (req,res)=>{
+  //res.send('You posted to this route...');
+  let question = new Question({
+    theQuestion:req.body.theQuestion,
+    option1:req.body.option1,
+    option2:req.body.option2,
+    option3:req.body.option3,
+    option4:req.body.option4,
+    theAnswer:req.body.theAnswer
+  });
+  question.save(function(err){
+    if(err) throw err;
+    //console.log(done + 'question saved...');
+     res.redirect('/dashboard/addquestions');
   });
 });
 

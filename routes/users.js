@@ -26,14 +26,16 @@ let requireLogOut = function(req,res,next){
 
 //allow access to Master only.
 let masterLogin = function(req,res,next){
-	bcrypt.compare(process.env.masterPassword,  function(err, response) {
+	bcrypt.compare(process.env.masterPassword,req.user.password,  function(err, response) {
 		if(err) throw err;
 		console.log(response);
+		console.log(process.env.password);
 		// res === true || res === false
 		if(req.user.username == process.env.masterUsername && response == true){
 			next();
 		}
 		else{
+			req.flash('error', 'You are not authorized to access that page')
 			res.redirect('/auth/login');
 		}
 	});
@@ -42,19 +44,20 @@ let masterLogin = function(req,res,next){
 
 //get auth
 router.get('/', restrictAccess,masterLogin, (req,res,next)=>{
-	res.redirect('/auth/addusers');
+	res.redirect('/auth/register');
 });
 // Add users
-router.get('/addusers', restrictAccess, masterLogin, function(req,res,next){
-	res.render('addusers',{
-	  title:'Create users'
+router.get('/register', function(req,res,next){
+	res.render('register',{
+	  title:'Register'
 	});
 });
 
-router.post('/addusers', restrictAccess, function(req,res,next){
+router.post('/register', function(req,res,next){
 	req.checkBody('name', 'Please provide your full name').notEmpty();
 	req.checkBody('username', 'Please provide a username').notEmpty();
 	req.checkBody('email', 'Please provide a valid email address').isEmail();
+	req.checkBody('phone', 'Please provide a valid phone number').notEmpty();
 	req.checkBody('password', 'password cannot be empty').notEmpty();
 	req.checkBody('password2', 'passwords do not match').equals(req.body.password);
   
@@ -62,8 +65,13 @@ router.post('/addusers', restrictAccess, function(req,res,next){
 	let user = new User({
 	  name: req.body.name,
 	  username:req.body.username,
-	  email: req.body.email,
-	  password: req.body.password
+		email: req.body.email,
+		phone:req.body.phone,
+		password: req.body.password,
+		currQuestNo:1,
+		latestScore:0,
+		startTime:0,
+		currTime:0
 	});
   
 	//Run the validators
@@ -71,12 +79,10 @@ router.post('/addusers', restrictAccess, function(req,res,next){
 	
 	//if there are errors in the form
 	if(errors){
-	  res.render('addusers',  {
+	  res.render('register',  {
 		title: 'Create Users',
 		errors: errors,
-		name:req.body.name,
-		username:req.body.username,
-		email:req.body.email
+		user:user
 	  });
 	  return;
 	}
@@ -92,12 +98,10 @@ router.post('/addusers', restrictAccess, function(req,res,next){
 		//if the username is truely already in user by another user
 		if(result){
 		  console.log('username is already taken');
-		  res.render('addusers',{
+		  res.render('register',{
 			title:'Create Users',
 			msg: 'Username already taken. Please try another one',
-			name:req.body.name,
-			username:req.body.username,
-			email:req.body.email
+			user:user
 		  });
 		}
   
@@ -113,7 +117,7 @@ router.post('/addusers', restrictAccess, function(req,res,next){
 			  //res.redirect('/users/login');
 			  req.login(user, function(err) {
 				if (err) { return next(err); }
-				return res.redirect('/dashboard');
+				return res.redirect('/quiz/welcome');
 			  });
 			});
 		  })
@@ -157,13 +161,16 @@ passport.use(new LocalStrategy(
 	}
 ));
   
-router.get('/login', requireLogOut, function(req, res, next){
-	res.render('login', {
-		title: 'Login',
-		isLoggedIn:req.user? req.user : ''
+router.get('/login', function(req, res, next){
+	req.session.destroy(function(err){
+	  console.log('user logged out... session deleted.')
+	  res.render('login', {
+			title: 'Login',
+			isLoggedIn:req.user? req.user : ''
+		});
 	});
 });
-  router.post('/login', requireLogOut,
+  router.post('/login',
 	passport.authenticate('local', {failureRedirect:'/auth/login', failureFlash:'authentication failed'}),
 	function(req, res) {
 	  console.log('authentication successful!')
@@ -171,7 +178,7 @@ router.get('/login', requireLogOut, function(req, res, next){
 	  // If this function gets called, authentication was successful.
 	  // `req.user` contains the authenticated user.
 	 // res.redirect('/users/' + req.user.username);
-	 res.redirect('/dashboard');
+	 res.redirect('/quiz/welcome');
   });
   
   router.get('/logout', function(req, res, next){

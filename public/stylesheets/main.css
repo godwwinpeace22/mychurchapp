@@ -619,6 +619,14 @@ footer ul p{
     height:160px;
 }
 
+/* login */
+.login, .register{
+    background-image: url(/images/loginbanner.jpg);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color:#fff;
+}
 
 /*media queries*/
 @media (max-width:978px){

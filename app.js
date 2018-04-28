@@ -9,6 +9,7 @@ const expressValidator = require('express-validator');
 const passport = require('passport');
 const flash = require('connect-flash');
 const mongoose = require('mongoose');
+require('dotenv').config();
 const mongoDB = process.env.database;
 const MongoDBStore = require('connect-mongodb-session')(session);
 const compression = require('compression');
@@ -20,6 +21,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 const index = require('./routes/index');
 const dashboard = require('./routes/dashboard');
 const auth = require('./routes/users');
+const quiz = require('./routes/quiz');
 
 const app = express();
 // Set security headers
@@ -32,7 +34,6 @@ app.use(helmet())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -40,12 +41,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(require('express-session')({
-    secret: 'supersecretecatkeyguyfalsetrue',
-    resave: false,
-    saveUninitialized: false,
-    cookie:{maxAge:365 * 24 * 60 * 60 * 1000},
+    secret: 'secretecatkeyguyfalsetrue',
+    resave: true,
+    rolling: true,
+    saveUninitialized: true,
+    cookie:{maxAge:60 * 60 * 1000},
     store: new MongoDBStore({
-        uri: process.env.database,
+        uri: mongoDB,
         databaseName: 'lighthouseparishapp',
         collection: 'sessions'
       })
@@ -58,7 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/dashboard', dashboard);
 app.use('/auth', auth);
-
+app.use('/quiz', quiz);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

@@ -1,0 +1,43 @@
+extends layout
+block content
+	link(rel='stylesheet', href='/stylesheets/quiz.css')
+	script(src='/javascripts/fast.js')
+	h1.text-center StarQuiz
+	//p.text-center Welcome to the Quiz
+	.col-sm-10.col-sm-offset-1.containr(style='background-color:;height:300px;margin-top:5%;margin-bottom:10%;')
+		.disturb
+			.lds-ring
+				div
+				div
+				div
+				div
+		.header.col-sm-12.clearfix 
+			.questNo.pull-left
+				p.text-center(style='font-size:2em;'): b#currQuestNo #{currQuestNo} / 4
+				//hr(style='margin-bottom:0px;margin-top:5px;')
+				p.text-center(style=''): b Question Number
+			.timer.pull-right
+				p#timer.text-center(style='font-size:2em;font-weight:bold;' currTime=currTime, startTime=startTime  ): b 02:00
+				p.text-center(style=''): b Timer
+			h3.text-center#thequestion.thequestion(style='color:#fff;') #{question[0].theQuestion}
+		section.col-sm-12(style='margin-top:10%;margin-bottom:10px;')
+			.inner
+				button.btn.btn-default.pull-left.multi.multi1(disabled) A
+				button.btn.btn-default.pull-left.options.option1(type='button' style='' disabled) #{question[0].option1}
+				button.btn.btn-default.pull-right.options.option2(type='button' style='' disabled) #{question[0].option2}
+				button.btn.btn-default.pull-right.multi.multi2(disabled) B
+			.inner
+				button.btn.btn-default.pull-left.multi.multi1(disabled) C
+				button.btn.btn-default.pull-left.options.option3(type='button' style='' disabled) #{question[0].option3}
+				button.btn.btn-default.pull-right.options.option4(type='button' style='' disabled) #{question[0].option4}
+				button.btn.btn-default.pull-right.multi.multi2(disabled) D
+		.preven.col-sm-12
+			h2.result
+		audio(controls loop id='audio')
+			source(src="/audio/clock.ogg" type="audio/ogg")
+			source(src="/audio/clock.mp3" type="audio/mpeg")
+			span Your browser does not support the audio element.
+	script(src='/javascripts/jquery-3.2.0.js')
+	script(src='/javascripts/test.js')
+
+
